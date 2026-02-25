@@ -25,6 +25,12 @@ export ANDROID_API_LEVEL
 
 echo "Using ANDROID_API_LEVEL=$ANDROID_API_LEVEL"
 
+# Disable native C extensions that are fragile on Termux.
+export AIOHTTP_NO_EXTENSIONS=1
+export MULTIDICT_NO_EXTENSIONS=1
+export YARL_NO_EXTENSIONS=1
+export FROZENLIST_NO_EXTENSIONS=1
+
 python -m pip install --upgrade pip setuptools wheel
 python -m pip install -r "$ROOT_DIR/requirements.txt"
 

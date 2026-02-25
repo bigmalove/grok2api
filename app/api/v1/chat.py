@@ -21,6 +21,7 @@ from app.services.grok.utils.response import make_chat_response
 from app.services.token import get_token_manager
 from app.core.config import get_config
 from app.core.exceptions import ValidationException, AppException, ErrorType
+from app.core.pydantic_compat import model_dump
 
 
 class MessageItem(BaseModel):
@@ -644,7 +645,7 @@ async def chat_completions(request: ChatCompletionRequest):
 
         result = await VideoService.completions(
             model=request.model,
-            messages=[msg.model_dump() for msg in request.messages],
+            messages=[model_dump(msg) for msg in request.messages],
             stream=request.stream,
             reasoning_effort=request.reasoning_effort,
             aspect_ratio=v_conf.aspect_ratio,
@@ -655,7 +656,7 @@ async def chat_completions(request: ChatCompletionRequest):
     else:
         result = await ChatService.completions(
             model=request.model,
-            messages=[msg.model_dump() for msg in request.messages],
+            messages=[model_dump(msg) for msg in request.messages],
             stream=request.stream,
             reasoning_effort=request.reasoning_effort,
             temperature=request.temperature,

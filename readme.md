@@ -46,6 +46,9 @@ bash scripts/termux-run.sh
 >
 > 若安装时报 `pydantic-core` / `maturin` 的 Android API level 错误，请先执行：
 > `export ANDROID_API_LEVEL=$(getprop ro.build.version.sdk)` 再重试安装。
+>
+> 若出现 `aiohttp` 编译失败，可先执行：
+> `export AIOHTTP_NO_EXTENSIONS=1 MULTIDICT_NO_EXTENSIONS=1 YARL_NO_EXTENSIONS=1 FROZENLIST_NO_EXTENSIONS=1`
 
 ### Docker Compose
 

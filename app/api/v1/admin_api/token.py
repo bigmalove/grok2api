@@ -8,6 +8,7 @@ from app.core.auth import get_app_key, verify_app_key
 from app.core.batch import create_task, expire_task, get_task
 from app.core.logger import logger
 from app.core.storage import get_storage
+from app.core.pydantic_compat import model_dump, model_field_names
 from app.services.grok.batch_services.usage import UsageService
 from app.services.grok.batch_services.nsfw import NSFWService
 from app.services.token.manager import get_token_manager
@@ -33,7 +34,7 @@ async def update_tokens(data: dict):
         async with storage.acquire_lock("tokens_save", timeout=10):
             existing = await storage.load_tokens() or {}
             normalized = {}
-            allowed_fields = set(TokenInfo.model_fields.keys())
+            allowed_fields = model_field_names(TokenInfo)
             existing_map = {}
             for pool_name, tokens in existing.items():
                 if not isinstance(tokens, list):
@@ -80,7 +81,7 @@ async def update_tokens(data: dict):
                     filtered = {k: v for k, v in merged.items() if k in allowed_fields}
                     try:
                         info = TokenInfo(**filtered)
-                        pool_list.append(info.model_dump())
+                        pool_list.append(model_dump(info))
                     except Exception as e:
                         logger.warning(f"Skip invalid token in pool '{pool_name}': {e}")
                         continue

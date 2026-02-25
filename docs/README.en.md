@@ -46,6 +46,9 @@ bash scripts/termux-run.sh
 >
 > If installation fails on `pydantic-core` / `maturin` with Android API level errors, run:
 > `export ANDROID_API_LEVEL=$(getprop ro.build.version.sdk)` and retry.
+>
+> If `aiohttp` build fails, set:
+> `export AIOHTTP_NO_EXTENSIONS=1 MULTIDICT_NO_EXTENSIONS=1 YARL_NO_EXTENSIONS=1 FROZENLIST_NO_EXTENSIONS=1`
 
 ### Docker Compose
 

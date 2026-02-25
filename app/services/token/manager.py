@@ -17,6 +17,7 @@ from app.services.token.models import (
 from app.core.storage import get_storage, LocalStorage
 from app.core.config import get_config
 from app.core.exceptions import UpstreamException
+from app.core.pydantic_compat import model_dump
 from app.services.token.pool import TokenPool
 from app.services.grok.batch_services.usage import UsageService
 
@@ -224,7 +225,7 @@ class TokenManager:
                     info = pool.get(token_key)
                     if not info:
                         continue
-                    payload = info.model_dump()
+                    payload = model_dump(info)
                     payload["pool_name"] = pool_name
                     payload["_update_kind"] = change_kind
                     updates.append(payload)
@@ -757,7 +758,7 @@ class TokenManager:
         stats = {}
         for name, pool in self.pools.items():
             pool_stats = pool.get_stats()
-            stats[name] = pool_stats.model_dump()
+            stats[name] = model_dump(pool_stats)
         return stats
 
     def get_pool_tokens(self, pool_name: str = "ssoBasic") -> List[TokenInfo]:
