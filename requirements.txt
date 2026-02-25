@@ -1,0 +1,10 @@
+aiofiles>=25.1.0
+aiohttp>=3.13.3
+aiohttp-socks>=0.11.0
+certifi>=2024.8.30
+fastapi>=0.119.0
+loguru>=0.7.3
+python-dotenv>=1.0.0
+python-multipart>=0.0.21
+uvicorn>=0.37.0
+websockets>=16.0

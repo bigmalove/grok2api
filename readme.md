@@ -19,9 +19,30 @@
 ### 本地开发
 
 ```bash
-uv sync
-uv run main.py
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+source .venv/bin/activate
+python -m pip install -U pip
+python -m pip install -r requirements.txt
+python main.py
 ```
+
+### Android Termux（无 Root）
+
+```bash
+pkg update -y
+pkg install -y git
+
+git clone https://github.com/chenyme/grok2api
+cd grok2api
+
+bash scripts/termux-setup.sh
+bash scripts/termux-run.sh
+```
+
+> Termux 默认走兼容模式，不依赖 `uv`、`curl_cffi`、`orjson` 才能启动。
+>
+> 如需 MySQL / Redis / PostgreSQL，再执行：`python -m pip install -r requirements-storage.txt`。
 
 ### Docker Compose
 

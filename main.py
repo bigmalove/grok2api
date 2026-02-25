@@ -149,11 +149,14 @@ if __name__ == "__main__":
 
     # 平台检查
     is_windows = platform.system() == "Windows"
+    prefix = os.getenv("PREFIX", "")
+    is_termux = bool(os.getenv("TERMUX_VERSION")) or "com.termux" in prefix
 
     # 自动降级
-    if is_windows and workers > 1:
+    if (is_windows or is_termux) and workers > 1:
+        platform_name = "Windows" if is_windows else "Termux"
         logger.warning(
-            f"Windows platform detected. Multiple workers ({workers}) is not supported. "
+            f"{platform_name} platform detected. Multiple workers ({workers}) is not recommended. "
             "Using single worker instead."
         )
         workers = 1

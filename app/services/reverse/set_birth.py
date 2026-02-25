@@ -5,7 +5,7 @@ Reverse interface: set birth date.
 import datetime
 import random
 from typing import Any
-from curl_cffi.requests import AsyncSession
+from app.core.http_client import AsyncSession
 
 from app.core.logger import logger
 from app.core.config import get_config
@@ -109,3 +109,4 @@ class SetBirthReverse:
 
 
 __all__ = ["SetBirthReverse"]
+

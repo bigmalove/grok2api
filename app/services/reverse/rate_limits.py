@@ -2,9 +2,9 @@
 Reverse interface: rate limits.
 """
 
-import orjson
+from app.core import json_compat as orjson
 from typing import Any
-from curl_cffi.requests import AsyncSession
+from app.core.http_client import AsyncSession
 
 from app.core.logger import logger
 from app.core.config import get_config
@@ -98,3 +98,5 @@ class RateLimitsReverse:
 
 
 __all__ = ["RateLimitsReverse"]
+
+

@@ -7,8 +7,8 @@ import uuid
 import re
 from typing import Any, AsyncGenerator, AsyncIterable, Optional
 
-import orjson
-from curl_cffi.requests.errors import RequestsError
+from app.core import json_compat as orjson
+from app.core.http_client import RequestsError
 
 from app.core.logger import logger
 from app.core.config import get_config
@@ -683,3 +683,5 @@ class VideoCollectProcessor(BaseProcessor):
 
 
 __all__ = ["VideoService"]
+
+

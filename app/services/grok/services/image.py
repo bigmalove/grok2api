@@ -10,7 +10,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, AsyncGenerator, AsyncIterable, Dict, List, Optional, Union
 
-import orjson
+from app.core import json_compat as orjson
 
 from app.core.config import get_config
 from app.core.logger import logger
@@ -666,3 +666,4 @@ class ImageWSCollectProcessor(ImageWSBaseProcessor):
 
 
 __all__ = ["ImageGenerationService"]
+

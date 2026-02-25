@@ -3,7 +3,7 @@ Reverse interface: list assets.
 """
 
 from typing import Any, Dict
-from curl_cffi.requests import AsyncSession
+from app.core.http_client import AsyncSession
 
 from app.core.logger import logger
 from app.core.config import get_config
@@ -102,3 +102,4 @@ class AssetsListReverse:
 
 
 __all__ = ["AssetsListReverse"]
+

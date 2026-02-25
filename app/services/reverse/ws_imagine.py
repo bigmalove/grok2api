@@ -3,7 +3,7 @@ Reverse interface: Imagine WebSocket image stream.
 """
 
 import asyncio
-import orjson
+from app.core import json_compat as orjson
 import re
 import time
 import uuid
@@ -279,3 +279,4 @@ class ImagineWebSocketReverse:
 
 
 __all__ = ["ImagineWebSocketReverse", "WS_IMAGINE_URL"]
+

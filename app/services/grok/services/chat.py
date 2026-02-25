@@ -7,8 +7,8 @@ import re
 import uuid
 from typing import Dict, List, Any, AsyncGenerator, AsyncIterable
 
-import orjson
-from curl_cffi.requests.errors import RequestsError
+from app.core import json_compat as orjson
+from app.core.http_client import RequestsError
 
 from app.core.logger import logger
 from app.core.config import get_config
@@ -844,3 +844,5 @@ __all__ = [
     "MessageExtractor",
     "ChatService",
 ]
+
+

@@ -1,6 +1,6 @@
 import asyncio
 
-import orjson
+from app.core import json_compat as orjson
 from fastapi import APIRouter, Depends, HTTPException, Request
 from fastapi.responses import StreamingResponse
 
@@ -393,3 +393,4 @@ async def enable_nsfw_async(data: dict):
         "task_id": task.id,
         "total": len(unique_tokens),
     }
+

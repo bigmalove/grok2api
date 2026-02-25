@@ -3,7 +3,7 @@ import time
 import uuid
 from typing import Optional, List, Dict, Any
 
-import orjson
+from app.core import json_compat as orjson
 from fastapi import APIRouter, Depends, HTTPException, Query, Request, WebSocket, WebSocketDisconnect
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
@@ -503,3 +503,4 @@ class ImagineStopRequest(BaseModel):
 async def public_imagine_stop(data: ImagineStopRequest):
     removed = await _drop_sessions(data.task_ids or [])
     return {"status": "success", "removed": removed}
+

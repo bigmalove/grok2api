@@ -10,8 +10,8 @@ import time
 from dataclasses import dataclass
 from typing import AsyncGenerator, AsyncIterable, List, Union, Any
 
-import orjson
-from curl_cffi.requests.errors import RequestsError
+from app.core import json_compat as orjson
+from app.core.http_client import RequestsError
 
 from app.core.config import get_config
 from app.core.exceptions import (
@@ -553,3 +553,5 @@ class ImageCollectProcessor(BaseProcessor):
 
 
 __all__ = ["ImageEditService", "ImageEditResult"]
+
+

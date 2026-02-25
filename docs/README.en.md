@@ -19,9 +19,30 @@ Grok2API rebuilt with **FastAPI**, fully aligned with the latest web call format
 ### Local
 
 ```bash
-uv sync
-uv run main.py
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+source .venv/bin/activate
+python -m pip install -U pip
+python -m pip install -r requirements.txt
+python main.py
 ```
+
+### Android Termux (No Root)
+
+```bash
+pkg update -y
+pkg install -y git
+
+git clone https://github.com/chenyme/grok2api
+cd grok2api
+
+bash scripts/termux-setup.sh
+bash scripts/termux-run.sh
+```
+
+> Termux uses compatibility mode by default and does not require `uv`, `curl_cffi`, or `orjson` to boot.
+>
+> If you need MySQL / Redis / PostgreSQL backends, also run: `python -m pip install -r requirements-storage.txt`.
 
 ### Docker Compose
 

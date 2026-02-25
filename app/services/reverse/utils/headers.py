@@ -2,7 +2,7 @@
 
 import re
 import uuid
-import orjson
+from app.core import json_compat as orjson
 from urllib.parse import urlparse
 from typing import Dict, Optional
 
@@ -226,3 +226,4 @@ def build_headers(cookie_token: str, content_type: Optional[str] = None, origin:
 
 
 __all__ = ["build_headers", "build_sso_cookie", "build_ws_headers"]
+

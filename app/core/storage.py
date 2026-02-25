@@ -25,7 +25,7 @@ except ImportError:  # pragma: no cover - non-posix platforms
     fcntl = None
 from contextlib import asynccontextmanager
 
-import orjson
+from app.core import json_compat as orjson
 import aiofiles
 from app.core.logger import logger
 
@@ -1476,3 +1476,4 @@ class StorageFactory:
 
 def get_storage() -> BaseStorage:
     return StorageFactory.get_storage()
+

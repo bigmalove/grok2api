@@ -3,7 +3,7 @@ import time
 import uuid
 from typing import Optional, List, Dict, Any
 
-import orjson
+from app.core import json_compat as orjson
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
@@ -272,3 +272,4 @@ async def public_video_stop(data: VideoStopRequest):
 
 
 __all__ = ["router"]
+

@@ -1,0 +1,5 @@
+aiomysql>=0.2.0
+asyncpg>=0.31.0
+greenlet>=3.3.1
+redis>=6.4.0
+sqlalchemy>=2.0.46
