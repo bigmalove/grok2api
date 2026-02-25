@@ -43,6 +43,9 @@ bash scripts/termux-run.sh
 > Termux 默认走兼容模式，不依赖 `uv`、`curl_cffi`、`orjson` 才能启动。
 >
 > 如需 MySQL / Redis / PostgreSQL，再执行：`python -m pip install -r requirements-storage.txt`。
+>
+> 若安装时报 `pydantic-core` / `maturin` 的 Android API level 错误，请先执行：
+> `export ANDROID_API_LEVEL=$(getprop ro.build.version.sdk)` 再重试安装。
 
 ### Docker Compose
 

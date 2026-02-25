@@ -43,6 +43,9 @@ bash scripts/termux-run.sh
 > Termux uses compatibility mode by default and does not require `uv`, `curl_cffi`, or `orjson` to boot.
 >
 > If you need MySQL / Redis / PostgreSQL backends, also run: `python -m pip install -r requirements-storage.txt`.
+>
+> If installation fails on `pydantic-core` / `maturin` with Android API level errors, run:
+> `export ANDROID_API_LEVEL=$(getprop ro.build.version.sdk)` and retry.
 
 ### Docker Compose
 

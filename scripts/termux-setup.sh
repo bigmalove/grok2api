@@ -16,6 +16,15 @@ python -m venv "$VENV_DIR"
 # shellcheck disable=SC1091
 source "$VENV_DIR/bin/activate"
 
+# pydantic-core (via maturin/pyo3) needs Android API level in Termux.
+ANDROID_API_LEVEL="${ANDROID_API_LEVEL:-$(getprop ro.build.version.sdk 2>/dev/null || true)}"
+if [ -z "$ANDROID_API_LEVEL" ]; then
+  ANDROID_API_LEVEL=24
+fi
+export ANDROID_API_LEVEL
+
+echo "Using ANDROID_API_LEVEL=$ANDROID_API_LEVEL"
+
 python -m pip install --upgrade pip setuptools wheel
 python -m pip install -r "$ROOT_DIR/requirements.txt"
 
